@@ -1,0 +1,278 @@
+<div style="margin-top: 120px; margin-left:710px;">
+        <div
+        class=" btn-group btn-group-toggle" id="pos1"
+        data-toggle="buttons"
+        style="background-color:  #0eabc7e7;"
+        >
+        <label class=" btn btn-sm btn-danger btn-simple " (click)="clickVirer()" [ngClass]="{'active':clicked===true}" style="font-size: medium;background-color:  #0eabc7e7;">
+          <input checked="checked" name="options" type="radio"  />
+        
+          <span
+            class=" d-none d-sm-block d-md-block d-lg-block d-xl-block"
+          >
+           Virer argents
+          </span>
+          <span class=" d-block d-sm-none">
+            <i class=" tim-icons icon-single-02"> </i>
+          </span>
+        </label>
+        <label class=" btn btn-sm btn-danger btn-simple" (click)="clickRetirer()" [ngClass]="{'active':clicked1===true}" style="font-size: medium;background-color:  #0eabc7e7;">
+          <input
+            class=" d-none d-sm-none"
+            name="options"
+            type="radio"
+          />
+        
+          <span
+            class=" d-none d-sm-block d-md-block d-lg-block d-xl-block"
+          >
+           Retirer argents
+          </span>
+          <span class=" d-block d-sm-none">
+            <i class=" tim-icons icon-gift-2"> </i>
+          </span>
+        </label>
+        
+        <label class=" btn btn-sm btn-danger btn-simple" (click)="clickTransferer()" [ngClass]="{'active':clicked2===true}" style="font-size: medium;background-color:  #0eabc7e7;">
+                <input
+                  class=" d-none d-sm-none"
+                  name="options"
+                  type="radio"
+                />
+              
+                <span
+                  class=" d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                >
+                 Transferer
+                </span>
+                <span class=" d-block d-sm-none">
+                  <i class=" tim-icons icon-gift-2"> </i>
+                </span>
+              </label>
+        </div>
+</div>
+
+<!-- Virer -->
+
+
+<div *ngIf="virer" style="margin-left: 120px; margin-top: 20px; margin-right: 110px;">
+   
+   
+   <div class=" card card-user">
+    <div class=" card-body">
+          <div class=" card-description">
+              <p style="margin-left:50px; margin-top:15px;font-weight: bold;">SE CONNECTER À VOTRE COMPTE</p>
+             <div class="row" style="margin-top: 20px;">
+ 
+                <div class=" col-md-4 pr-md-1" style="margin-left: 150px;" >
+               <div class=" form-group">
+                  <label > Saisir votre RIB </label>
+                  <input
+                    class=" form-control"
+                    placeholder="RIB"
+                    type="text"
+                    [formControl]="RIBFormControl"
+                    (blur)="getCompte()"
+                  />
+                </div>
+              </div>
+              
+              <div class=" col-md-3 pr-md-1" >
+                  <div class=" form-group">
+                     <label > Saisir montant</label>
+                     <input
+                       class=" form-control"
+                       placeholder="montant en dinars"
+                       type="text"
+                       [formControl]="MontantFormControl"
+                     />
+                   </div>
+                 </div>
+             </div>
+             <div class="row">
+               <button mat-raised-button  style="margin-left: 1000px;margin-top: 20px;font-size: medium;background-color: #ececec;" (click)="validerVirement()" >Valider</button>
+               <button mat-raised-button  style="margin-left: 870px;margin-top: -36px;font-size: medium;background-color: #ececec;" (click)="AnnulerVirement()">Annuler</button>
+             </div>
+            </div>
+
+  </div>
+
+  
+  </div>
+  <!-- <label for="exampleFormControlSelect1">Num de Compte</label>
+  <select class=" col-md-6 pl-md-1" class="form-control" id="banque">
+    <option class="ess">0233545656497</option>
+    <option class="ess">1545235687897</option>
+    <option class="ess">5457552364899</option>
+  </select> -->
+  <table class=" table tablesorter" id="">
+      <thead class=" text-primary">
+        <tr>
+          <th class=" text-center" style="background-color:  #0eabc7e7; color: white;">Date</th>
+          <th class=" text-center" style="background-color:  #0eabc7e7; color: white;">Compte bénéficiaire</th>
+          <th class=" text-center" style="background-color:  #0eabc7e7; color: white;">Ancien solde</th>
+          <th class=" text-center" style="background-color:  #0eabc7e7; color: white;">Montant viré</th>
+          <th class=" text-center" style="background-color:  #0eabc7e7; color: white;">Votre nouveau solde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class=" text-center" style="background-color: rgb(251 251 251 / 71%);font-weight: 500;">{{date}}</td>
+          <td class=" text-center" id="cpt" style="font-weight: 500;">{{RIB}}</td>
+          <td class=" text-center" id="mt" style="font-weight: 500;">{{AncienSolde}}</td>
+          <td class=" text-center" style="background-color: rgb(251 251 251 / 71%);font-weight: 500;" >{{_OperationModelADD.montant}}</td>
+          <td class=" text-center" id="solde" style="font-weight: 500;">{{_OperationModelADD.soldeNv}}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+<!-- Retirer -->
+<div *ngIf="retirer" style="margin-left: 120px; margin-top: 20px; margin-right: 110px;">
+    <div class=" card card-user">
+        <div class=" card-body">
+              <div class=" card-description">
+                  <p style="margin-left:50px; margin-top:15px;font-weight: bold;">SE CONNECTER À VOTRE COMPTE</p>
+                 <div class="row" style="margin-top: 20px;">
+                    <div class=" col-md-4 pr-md-1" style="margin-left:150px;">
+                   <div class=" form-group">
+                      <label > Saisir votre rib</label>
+                      <input
+                        class=" form-control"
+                        placeholder="RIB"
+                        type="text"
+                        [formControl]="RIBFormControlretir"
+                        (blur)="getCompte()"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div class=" col-md-3 pr-md-1" >
+                      <div class=" form-group">
+                         <label > Saisir montant à retirer</label>
+                         <input
+                           class=" form-control"
+                           placeholder="montant en dinars"
+                           type="text"
+                           [formControl]="MontantFormControlretir"
+                         />
+                       </div>
+                     </div>
+                 </div>
+                 <div class="row">
+                   <button mat-raised-button  style="margin-left: 1000px;margin-top: 20px;font-size: medium;background-color: #ececec;" (click)="validerRetirement()">Valider</button>
+                   <button mat-raised-button  style="margin-left: 870px;margin-top: -36px;font-size: medium;background-color: #ececec;" (click)="AnnulerRetirement()">Annuler</button>
+                 </div>
+                </div>
+    
+      </div>
+    
+      
+      </div>
+     
+      <table class=" table tablesorter" id="">
+          <thead class=" text-primary">
+            <tr>
+              <th style="background-color:  #0eabc7e7; color: white;">Date</th>
+              <th style="background-color:  #0eabc7e7; color: white;">Num Compte </th>
+              <th style="background-color:  #0eabc7e7; color: white;">Ancien solde</th>
+              <th class=" text-center" style="background-color:  #0eabc7e7; color: white;">Montant retiré</th>
+              <th class=" text-center" style="background-color:  #0eabc7e7; color: white;">Votre nouveau solde</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class=" text-center" style="background-color: rgb(251 251 251 / 71%);font-weight: 500;">{{date}}</td>
+              <td class=" text-center" id="cpt" style="font-weight: 500;">{{RIB}}</td>
+              <td class=" text-center" id="mt" style="font-weight: 500;">{{AncienSolde}}</td>
+              <td class=" text-center" style="background-color: rgb(251 251 251 / 71%);font-weight: 500;">{{_OperationModelADD.montant}}</td>
+              <td class=" text-center" id="solde" style="font-weight: 500;">{{_OperationModelADD.soldeNv}}</td>
+            </tr>
+          </tbody>
+        </table>
+</div>
+
+<!-- transferer -->
+<div *ngIf="transferer" style="margin-left: 120px; margin-top: 20px; margin-right: 110px;">
+    <div class=" card card-user">
+        <div class=" card-body">
+              <div class=" card-description">
+                  <p style="margin-left:50px; margin-top:15px;font-weight: bold;">SE CONNECTER À VOTRE COMPTE</p>
+                 <div class="row" style="margin-top: 20px;">
+                    <div class=" col-md-3 pr-md-1" style="margin-left:120px;">
+                   <div class=" form-group">
+                      <label > Saisir votre RIB</label>
+                      <input
+                        class=" form-control"
+                        placeholder="RIB"
+                        type="text"
+                        [formControl]="RIBFormControltrans"
+                        (blur)="getCompte()"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div class=" col-md-3 pr-md-1" >
+                      <div class=" form-group">
+                         <label > Saisir num compte bénéficiaire</label>
+                         <input
+                           class=" form-control"
+                           placeholder="RIB"
+                           type="text"
+                           [formControl]="CPTBenFormControltrans"
+                           (blur)="getBenif()"
+                         />
+                       </div>
+                     </div>
+
+                  <div class=" col-md-2 pr-md-1" >
+                      <div class=" form-group">
+                         <label > Saisir montant à transférer</label>
+                         <input
+                           class=" form-control"
+                           placeholder="montant en dinars"
+                           type="text"
+                           [formControl]="MontantFormControltrans"
+                         />
+                       </div>
+                     </div>
+                 </div>
+                 <div class="row">
+                  <button  mat-raised-button style="margin-left: 1000px;margin-top: 20px;font-size: medium;background-color: #ececec;" (click)="validerTransfert()">Valider</button>
+                  <button mat-raised-button  style="margin-left: 870px;margin-top: -36px;font-size: medium;background-color: #ececec;" (click)="AnnulerTransfert()">Annuler</button>
+          
+                 </div>
+                </div>
+    
+      </div>
+    
+      
+      </div>
+     
+      <table class=" table tablesorter" id="">
+          <thead class=" text-primary">
+            <tr>
+              <th class=" text-center" style="background-color:  #0eabc7e7; color: white;">Date</th>
+              <th class=" text-center" style="background-color:  #0eabc7e7; color: white;">Compte émetteur</th>
+              <th class=" text-center" style="background-color:  #0eabc7e7; color: white;">Ancien solde</th>
+              <th class=" text-center" style="background-color:  #0eabc7e7; color: white;">Compte bénéfiaire</th>
+              <th class=" text-center" style="background-color:  #0eabc7e7; color: white;">Ancien solde</th>
+              <th class=" text-center" style="background-color:  #0eabc7e7; color: white;">Montant transférer</th>
+              <th class=" text-center" style="background-color:  #0eabc7e7; color: white;">Votre solde</th>
+              <th class=" text-center" style="background-color:  #0eabc7e7; color: white;">solde compte bénéficiaire</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class=" text-center" style="background-color: rgb(251 251 251 / 71%);font-weight: 500;">{{date}}</td>
+              <td class=" text-center" id="cpt" style="font-weight: 500;">{{RIB}}</td>
+              <td class=" text-center" style="background-color: rgb(251 251 251 / 71%);font-weight: 500;">{{AncienSoldeEmmet}}</td>
+              <td class=" text-center" style="background-color: rgb(251 251 251 / 71%);font-weight: 500;">{{RIBbenif}}</td>
+              <td class=" text-center" id="mt" style="font-weight: 500;">{{AncienSoldeBenif}}</td>
+              <td class=" text-center" style="background-color: rgb(251 251 251 / 71%);font-weight: 500;">{{_OperationModelADD.montant}}</td>
+              <td class=" text-center" style="background-color: rgb(251 251 251 / 71%);font-weight: 500;">{{_CompteModel.solde}}</td>
+              <td class=" text-center" id="solde" style="font-weight: 500;">{{_CompteModelBenif.solde}}t</td>
+            </tr>
+          </tbody>
+        </table>
+</div>

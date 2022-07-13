@@ -1,0 +1,35 @@
+
+mat-header-cell {
+    background-color: rgb(247, 240, 245)
+}
+mat-paginator{
+    background-color: rgb(247, 240, 245)
+}
+#solde{
+    background-color:rgb(181 230 201 / 71%);
+}
+#mt{
+    background-color:rgb(236 193 193 / 71%);
+}
+#bq{
+    background-color:rgb(222 224 224 / 85%);
+}
+#cpt{
+    background-color:rgb(234 234 234 / 85%);
+}
+// #nv{
+//     background-color:rgb(231 232 213 / 85%);
+// }
+
+  tbody {
+      display:block;
+      height:420px;
+      overflow:auto;
+      overflow-x: hidden; 
+  }
+  thead, tbody tr {
+      display:table;
+      width:100%;
+      table-layout:fixed;/* even columns width , fix width of table too*/
+  }
+ 

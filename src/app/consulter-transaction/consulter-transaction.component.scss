@@ -1,0 +1,27 @@
+#montant{
+    background-color: rgb(181 230 201 / 71%);
+}
+// #CPTbenif{
+//     background-color: rgb(236 193 193 / 71%);
+// }
+#CPTemmet{
+    background-color: rgb(213 226 226 / 71%);
+}
+#operation{
+    background-color:rgb(236 193 193 / 71%);
+}
+#client{
+    background-color:rgb(213 226 226 / 71%);
+}
+
+tbody {
+    display:block;
+    height:470px;
+    overflow:auto;
+    overflow-x: hidden; 
+}
+thead, tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;/* even columns width , fix width of table too*/
+}

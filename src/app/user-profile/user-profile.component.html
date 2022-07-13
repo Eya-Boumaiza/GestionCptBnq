@@ -1,0 +1,162 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-8">
+              <div class="card">
+                  <div class="card-header card-header-danger-blue" style="background-color: #0eabc7e7;">
+                      <h4 class="card-title">Modifier Profil</h4>
+                      <p class="card-category">Completer les informations manquantes</p>
+                  </div>
+                  <div class="card-body">
+                      <form>
+                          <div class="row">
+                              <div class="col-md-5">
+                                <div class=" form-group">
+                                  <label style="color: #5d5b5b;"> Pseudo </label>
+                                  <input  class=" form-control" type="text" value="" matInput [formControl]="PseudoFormControl" />
+                                </div>
+                              </div>
+                              <div class=" col-md-4 px-md-1">
+                                <div class=" form-group">
+                                  <label style="color: #5d5b5b;"> Nom </label>
+                                  <input  class=" form-control" type="text" value="" matInput [formControl]="NomFormControl"/>
+                                </div>
+                              </div>
+                              <div class=" col-md-3 pl-md-1">
+                                <div class=" form-group">
+                                  <label style="color: #5d5b5b;" for="exampleInputEmail1"> prénom </label>
+                                  <input  class=" form-control" type="text" matInput [formControl]="PrenomFormControl"/>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="row">
+                            <div class=" col-md-5 pr-md-1">
+                              <div class=" form-group">
+                                <label style="color: #5d5b5b;"> E-mail </label>
+                                <input class=" form-control" type="email" value="" matInput [formControl]="MailFormControl"/>
+                              </div>
+                            </div>
+                            <div class=" col-md-4 pl-md-1">
+                              <div class=" form-group">
+                                <label style="color: #5d5b5b;"> date naissance </label>
+                                <input class=" form-control" type="date" matInput [formControl]="DateNFormControl" />
+                              </div>
+                            </div>
+
+                            <div class=" col-md-3 pl-md-1">
+                              <div class=" form-group">
+                                <label style="color: #5d5b5b;"> telephone </label>
+                                <input class=" form-control" type="text" value="" matInput [formControl]="TelephoneFormControl"/>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class=" col-md-12">
+                              <div class=" form-group">
+                                <label style="color: #5d5b5b;"> Addresse </label>
+                                <input class=" form-control" placeholder="adresse (facultatif)" type="text" value="" matInput [formControl]="AdresseFormControl"/>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class=" col-md-4 pr-md-1">
+                              <div class=" form-group">
+                                <label style="color: #5d5b5b;"> Num CIN </label>
+                                <input
+                                  class=" form-control" type="text" value="" matInput [formControl]="NumCinFormControl"/>
+                              </div>
+                            </div>
+                            <div class=" col-md-4 px-md-1">
+                              <div class=" form-group">
+                                 <label style="color: #5d5b5b;">  banque </label>
+                                  <select class=" col-md-6 pl-md-1" class="form-control" id='bnq' disabled>
+                                      <option   id='bnq' *ngFor="let item of _CompteModel" class="ess" >{{item.banque}}</option>
+                                    </select>
+                                
+                                <!--<input class=" form-control" type="text" value="" matInput [formControl]="BanqueFormControl" /> -->
+                              </div>
+                            </div>
+                            <div class=" col-md-4 pl-md-1">
+                              <div class=" form-group">
+                                <label style="color: #5d5b5b;"> mot de passe </label>
+                                <input  class=" form-control" type="text" matInput [formControl]="MDPFormControl" />
+                              </div>
+                            </div>
+                          </div>
+                          
+                      </form>
+                  </div>
+
+                  <div class=" card-footer">
+                    <button *ngIf="showEnrg" class=" btn btn-fill btn-danger" type="submit" style="background-color: #0eabc7e7;" (click)='ModifierClient()'>Enregistrer</button>
+                  </div>
+                  <div class=" card-footer">
+                    <button *ngIf="showAct" class=" btn btn-fill btn-danger" style=" margin-left: 640px; margin-top: 10px;background-color: #0eabc7e7;"  (click)="activerModif()" type="submit">Activer la modification</button>
+                  </div>
+                 
+              </div>
+          </div>
+
+
+          <div class="col-md-4" style="margin-left: -12px;">
+              <div class="card card-profile">
+                  <div class="card-avatar">
+                      <a href="javascript:void(0)">
+                          <img class="img" src="./assets/img/faces/marc.jpg" />
+                      </a>
+                  </div>
+                  <div class="card-body">
+                      <h6 class="card-category text-gray">Nom et Prénom</h6>
+                      <h4 class="card-title">{{nom}} {{pre}} </h4>
+                      <div class=" card-description" style="margin-left: 50px">
+                        <div class="row"><label style="color: #5d5b5b;"> Date de naissance  </label> <label style="margin-left: 10px"> {{dateN| date:'dd  MMMM  yyyy'}}</label>   </div> 
+                        <div class="row"> <label style="color: #5d5b5b;">contact</label> <label style="margin-left: 10px">{{mobile}}</label>  </div>
+         
+                   <!-- </div>
+                      <a href="javascript:void(0)" class="btn btn-danger btn-round">Follow</a>
+                  </div> -->
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+  </div>
+
+
+  <div class=" col-md-4" style="margin-left: 920px; margin-top:-300px;">
+    <div class=" card card-user" >
+      <div class=" card-body">
+          <div class="table-wrapper-scroll-y my-custom-scrollbar">
+
+              <table class="table table-bordered table-striped mb-0">
+                <thead>
+                  <tr style="background-color: #0eabc7e7; ">
+                    <th scope="col"> <label style="color: #fdfdfd; font-size: medium;">Banque</label> </th>
+                    <th scope="col"> <label style="color: #fdfdfd; font-size: medium;">Num compte</label></th>
+                    <th scope="col"> <label style="color: #fdfdfd; font-size: medium;">Type</label></th>
+                    <th scope="col"> <label style="color: #fdfdfd; font-size: medium;">solde</label></th>
+                    <th scope="col"> <label style="color: #fdfdfd; font-size: medium;">desactivation</label></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of _CompteModel; let i=index">
+                    <th  id="bq">{{item.banque}}</th>
+                    <td>{{item.rib}}</td>
+                    <td>vide</td>
+                    <td>{{item.solde}}</td>
+                    <td class=" text-center" >
+                      <!-- <mat-icon (click)="desactiverCompte(i)">lock</mat-icon> -->
+                      <button class=" btn btn-fill btn-danger" style="background-color:  #c35770e7;" (click)="desactiverCompte(i)">Bloquer</button>
+                    </td>
+                  </tr>
+            
+                </tbody>
+              </table>
+            
+            </div>
+               </div>
+              </div>
+            </div>
+
+
+</div>

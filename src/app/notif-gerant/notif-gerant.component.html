@@ -1,0 +1,91 @@
+<!-- <div class=" col-md-6" style="margin-left: 500px; margin-top:200px;">
+    <div class=" card">
+      <div class=" card-header">
+        <h4 class=" card-title">Notification states</h4>
+      </div>
+      <div class=" card-body">
+        <ngb-alert [type]="'primary'" *ngIf="!staticAlertClosed3" [dismissible]="false">
+          <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close" (click)="staticAlertClosed3 = true">
+            <i class="tim-icons icon-simple-remove"></i>
+          </button>
+          <span>
+            <b> Primary - </b> This is a regular notification made
+            with ".alert-primary"
+          </span>
+        </ngb-alert>
+        <ngb-alert [type]="'info'" *ngIf="!staticAlertClosed4" [dismissible]="false">
+          <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close" (click)="staticAlertClosed4 = true">
+            <i class="tim-icons icon-simple-remove"></i>
+          </button>
+          <span>
+            <b> Info - </b> This is a regular notification made with
+            ".alert-info"
+          </span>
+        </ngb-alert>
+        <ngb-alert [type]="'success'" *ngIf="!staticAlertClosed5" [dismissible]="false">
+          <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close" (click)="staticAlertClosed5 = true">
+            <i class="tim-icons icon-simple-remove"></i>
+          </button>
+          <span>
+            <b> Success - </b> This is a regular notification made
+            with ".alert-success"
+          </span>
+        </ngb-alert>
+        <ngb-alert [type]="'warning'" *ngIf="!staticAlertClosed6" [dismissible]="false">
+          <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close" (click)="staticAlertClosed6 = true">
+            <i class="tim-icons icon-simple-remove"></i>
+          </button>
+          <span>
+            <b> Warning - </b> This is a regular notification made
+            with ".alert-warning"
+          </span>
+        </ngb-alert>
+        <ngb-alert [type]="'danger'" *ngIf="!staticAlertClosed7" [dismissible]="false">
+          <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close" (click)="staticAlertClosed7 = true">
+            <i class="tim-icons icon-simple-remove"></i>
+          </button>
+          <span>
+            <b> Danger - </b> This is a regular notification made with
+            ".alert-danger"
+          </span>
+        </ngb-alert>
+      </div>
+    </div>
+  </div> -->
+
+
+
+  
+  
+          <div class="table-wrapper-scroll-y my-custom-scrollbar"  style="margin-left: 40px; margin-top: 150px; margin-right: 110px;">
+
+              <table class="table table-bordered table-striped mb-0">
+                <thead>
+                  <tr>
+                    <th class=" text-center" scope="col" style="background-color:  #0eabc7e7; color: white;"></th>
+                    <th class=" text-center" scope="col" style="background-color:  #0eabc7e7; color: white;">Date demande</th>
+                    <th class=" text-center" scope="col" style="background-color:  #0eabc7e7; color: white;">Type demande</th>
+                    <th class=" text-center" scope="col" style="background-color:  #0eabc7e7; color: white;">Etat demande</th>
+                    <th class=" text-center" scope="col" id="accept" style="background-color:  #0eabc7e7; color: white;">Accepter demande</th>
+                    <th class=" text-center" scope="col" id="refuse" style="background-color:  #0eabc7e7; color: white;">Refuser demande</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of _DemandeModel; let i=index">
+                    <td class=" text-center" id="notif" style="font-weight: 500;"><mat-icon>access_time</mat-icon></td>
+                    <th class=" text-center" style="background-color: rgb(251 251 251 / 71%);font-weight: 500;">{{item.dateDemande}}</th>
+                    <th  class=" text-center" style="background-color: rgb(251 251 251 / 71%);font-weight: 500;">{{item.typeDemande}}</th>
+                    <th  class=" text-center" style="background-color: rgb(251 251 251 / 71%);font-weight: 500;">{{item.etatDemd}}</th>
+                    <td class=" text-center" id="accept" (click)="AcceptDMDdesCPT(i)" style="font-weight: 500;"><mat-icon>check_circle</mat-icon></td>
+                    <td class=" text-center" id="refuse" (click)="refuser(i)" style="font-weight: 500;"><mat-icon>delete_sweep</mat-icon></td>
+                  </tr>
+            
+                </tbody>
+              </table>
+            
+            </div>
+            
+
+
+  

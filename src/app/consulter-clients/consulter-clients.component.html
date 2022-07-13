@@ -1,0 +1,34 @@
+
+      
+      <div  style="margin-left: 40px; margin-top: 140px; margin-right: 110px;">
+      <table class=" table tablesorter"  >
+            <thead class=" text-primary">
+              <tr>
+                <th class=" text-center" style="background-color:  #0eabc7e7; color: white;">Client</th>
+                <th class=" text-center" style="background-color:  #0eabc7e7; color: white;">Num CIN</th>
+                <th class=" text-center" style="background-color:  #0eabc7e7; color: white;">Num compte</th>
+                <th class=" text-center" style="background-color:  #0eabc7e7; color: white;">Date creation</th>
+                <th class=" text-center" style="background-color:  #0eabc7e7; color: white;">Solde </th>
+                <th class=" text-center" style="background-color:  #0eabc7e7; color: white;">Etat Compte </th>
+                <th class=" text-center" style="background-color:  #0eabc7e7; color: white;">Desactiver compte</th>
+                <th class=" text-center" style="background-color:  #0eabc7e7; color: white;">Supprimer client</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of clientAll; let i=index">
+                <td class=" text-center" style="background-color: rgb(251 251 251 / 71%);font-weight: 500;">{{clientAll[i].nom}} {{clientAll[i].prenom}}</td>
+                <td class=" text-center" style="background-color: rgb(251 251 251 / 71%);font-weight: 500;"> {{clientAll[i].numCin}}</td>
+                <td class=" text-center" style="background-color: rgb(251 251 251 / 71%);font-weight: 500;">{{clientAll[i].rib}}</td>
+                <td class=" text-center" style="background-color: rgb(251 251 251 / 71%);font-weight: 500;">{{clientAll[i].dateCreation| date:'dd  MMMM  yyyy'}}</td>
+                <td class=" text-center" id="solde" style="font-weight: 500;">{{clientAll[i].solde}}</td>
+                <td class=" text-center" id="act" style="font-weight: 500;" >{{clientAll[i].etatC}}</td>
+                <td class=" text-center"  style="background-color: rgb(251 251 251 / 71%);font-weight: 500;"><mat-icon (click)="desactiverCompte(i)">not_interested</mat-icon></td>
+                <td class=" text-center" style="background-color: rgb(251 251 251 / 71%);font-weight: 500;"><mat-icon (click)="supprimerClient(i)">delete</mat-icon></td>
+              </tr>
+            
+            </tbody>
+          </table>
+         
+          </div>
+        
+   

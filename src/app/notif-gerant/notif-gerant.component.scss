@@ -1,0 +1,25 @@
+.table-wrapper-scroll-y {
+    display: block;
+    }
+    #accept{
+        background-color: rgba(181, 230, 201, 0.71);
+    }
+    #refuse{
+        background-color: rgba(236, 193, 193, 0.71);
+    }
+    #notif{
+        background-color: rgb(227 235 243 / 85%);
+    }
+
+    
+  tbody {
+    display:block;
+    height:470px;
+    overflow:auto;
+    overflow-x: hidden; 
+}
+thead, tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;/* even columns width , fix width of table too*/
+}

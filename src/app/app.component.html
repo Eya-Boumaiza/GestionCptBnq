@@ -1,0 +1,231 @@
+<!-- The content below is only a placeholder and can be replaced. -->
+<div *ngIf="showapp"><router-outlet></router-outlet> </div>
+<div style="margin-left: 1300px; margin-top: -50px;"><button   class=" btn btn-fill btn-danger" (click)="decnx()" style="background-color: #9b9b9b;margin-top: -150px;margin-left: 100px;">se déconnecter</button></div>
+
+<div *ngIf="!showapp"
+class=" btn-group btn-group-toggle" id="pos1"
+data-toggle="buttons"
+>
+<label class=" btn btn-sm btn-danger btn-simple" (click)="clicked=true;clicked1=false;show2=false;" [ngClass]="{'active':clicked===true}" style="font-size: medium;background-color:  #0eabc7e7;">
+  <input checked="checked" name="options" type="radio" />
+
+  <span class=" d-none d-sm-block d-md-block d-lg-block d-xl-block" >
+   SE CONNECTER
+  </span>
+  <span class=" d-block d-sm-none">
+    <i class=" tim-icons icon-single-02"> </i>
+  </span>
+</label>
+<label class=" btn btn-sm btn-danger btn-simple" (click)="clicked=false;clicked1=true;show2=true;" [ngClass]="{'active':clicked1===true}" style="font-size: medium;background-color:  #0eabc7e7;"s>
+  <input
+    class=" d-none d-sm-none"
+    name="options"
+    type="radio"
+  />
+
+  <span class=" d-none d-sm-block d-md-block d-lg-block d-xl-block">
+   S'INSCRIR
+  </span>
+  <span class=" d-block d-sm-none">
+    <i class=" tim-icons icon-gift-2"> </i>
+  </span>
+</label>
+
+</div>
+
+<div *ngIf="!hidelog" id="pos" class=" col-md-4">
+       
+    <div class=" card card-user">
+      <div class=" card-body">
+         
+        <p class=" card-text"></p>
+        <div class=" author">
+          <div class=" block block-one"></div>
+          <div class=" block block-two"></div>
+          <div class=" block block-three"></div>
+          <div class=" block block-four"></div>
+         
+        <div class=" card-description">
+            <!-- se connecter formulaire -->
+           
+                <div *ngIf="!show2" class=" form-group" style="margin-top: 40px;">
+                        <label style="margin-left: 30px; color: #5d5b5b;"> Nom d'utilisateur  </label>
+                        <input style="margin-left: 30px; width: 400px;background-color: #d0d8d82e;"
+                          class=" form-control"
+                          type="text"
+                          [formControl]="NomUserFormControl"
+                        />
+                      </div>
+                     
+                          <div *ngIf="!show2" class=" form-group">
+                                <label style="margin-left: 30px;  color: #5d5b5b;"> Mot de passe </label>
+                                <input style="margin-left: 30px; width: 400px;background-color: #d0d8d82e;"
+                                  class=" form-control"
+                                  type="password"
+                                  [formControl]="MDPFormControl"
+                                />
+                              </div>
+                              <div></div>
+
+              <!-- s'inscrir formulaire -->      
+
+          
+              <div *ngIf="show2" class=" row">
+                    <div class=" col-md-4 pr-md-1">
+                      <div class=" form-group">
+                        <label style=" color: #5d5b5b;"> Nom </label> <p style="margin-left: 40px;color: red;margin-top: -30px;">*</p>
+                        <input style="background-color: #d0d8d82e;"
+                          class=" form-control"
+                          type="text"
+                          [formControl]="NomFormControl"
+                        />
+                      </div>
+                    </div>
+
+                    <div class=" col-md-4 pl-md-1">
+                      <div class=" form-group">
+                        <label style=" color: #5d5b5b;"> Prénom </label><p style="margin-left: 60px;color: red;margin-top: -30px;">*</p>
+                        <input style="background-color: #d0d8d82e;"
+                          class=" form-control"
+                          type="text"
+                          [formControl]="PrenomFormControl"
+                        />
+                      </div>
+                    </div>
+                    <div class=" col-md-3 px-md-1">
+                            <div class=" form-group">
+                              <label style=" color: #5d5b5b;"> Num CIN </label><p style="margin-left: 70px;color: red;margin-top: -30px;">*</p>
+                              <input style="background-color: #d0d8d82e;"
+                                class=" form-control"
+                                type="text"
+                                [formControl]="CinFormControl"
+                              />
+                            </div>
+                          </div>
+                </div>
+
+            
+                <div *ngIf="show2" class=" row">
+                        <div class=" col-md-6 pr-md-1">
+                          <div class=" form-group">
+                            <label style=" color: #5d5b5b;"> E-mail </label>
+                            <p style="margin-left: 45px;color: red;margin-top: -30px;">*</p>
+                            <input style="background-color: #d0d8d82e;"
+                              class=" form-control"
+                              type="email"
+                              [formControl]="MailFormControl"
+                            />
+                          </div>
+                        </div>
+                        <div class=" col-md-6 pl-md-1">
+                          <div class=" form-group">
+                                <label for="exampleFormControlSelect1" style=" color: #5d5b5b;">Banque</label>
+                                <p style="margin-left: 55px;color: red;margin-top: -30px;">*</p>
+                                <select class=" col-md-6 pl-md-1" class="form-control" id="banque" style="background-color: #d0d8d82e;"  [(ngModel)]="donne" (change)="SelectedBnq(donne)">
+                                  <option class="ess" *ngFor="let bnq of _BanqueModel" [value]="bnq.codeBanque"  >{{bnq.nomBanque}}</option>
+                                </select>
+                          </div>
+                        </div>
+                    </div>
+
+                
+
+                          <div *ngIf="show2" class=" row">
+                                <div class=" col-md-6 pr-md-1">
+                                  <div class=" form-group">
+                                    <label style=" color: #5d5b5b;">  Nom d'utilisateur </label>
+                                    <p style="margin-left: 115px;color: red;margin-top: -30px;">*</p>
+                                    <input style="background-color: #d0d8d82e;"
+                                      class=" form-control"
+                                      type="text"
+                                      [formControl]="PseudoInFormControl"
+                                    />
+                                  </div>
+                                </div>
+                                <div class=" col-md-6 pl-md-1">
+                                  <div class=" form-group">
+                                    <label style=" color: #5d5b5b;"> Date de naissance</label>
+                                    <input style="background-color: #d0d8d82e; margin-top: 10px;"
+                                      class=" form-control"
+                                      type="date"
+                                      [formControl]="DateNFormControl"
+                                    />
+                                  </div>
+                                </div>
+                           
+                            </div>
+
+
+
+                            
+ 
+                            <div *ngIf="show2" class=" row">
+                              
+                              <div class=" col-md-8 pl-md-1"  style="margin-left: 2%">
+                                <div class=" form-group">
+                                  <label style=" color: #5d5b5b;"> Adresse</label>
+                                  <input style="background-color: #d0d8d82e;"
+                                    class=" form-control"
+                                    type="text"
+                                    [formControl]="AdresseFormControl"
+                                  />
+                                </div>
+                              </div>
+                              <div class=" col-md-4 pl-md-1" style="margin-left: -2%">
+                                <div class=" form-group">
+                                  <label style=" color: #5d5b5b;"> telephone</label>
+                                  <input style="background-color: #d0d8d82e;"
+                                    class=" form-control"
+                                    type="text"
+                                    [formControl]="TelephoneFormControl"
+                                  />
+                                </div>
+                              </div>
+                         
+                          </div>
+
+
+                            <div *ngIf="show2" class=" row">
+                                <div class=" col-md-6 pr-md-1">
+                                  <div class=" form-group">
+                                    <label style=" color: #5d5b5b;">  Mot de passe </label>
+                                    <p style="margin-left: 95px;color: red;margin-top: -30px;">*</p>
+                                    <input style="background-color: #d0d8d82e;"
+                                      class=" form-control"
+                                      type="password"
+                                      [formControl]="MDP1FormControl"
+                                    />
+                                  </div>
+                                </div>
+                                <div class=" col-md-6 pl-md-1">
+                                  <div class=" form-group">
+                                    <label style=" color: #5d5b5b;"> confirmer mot de passe</label>
+                                    <p style="margin-left: 160px;color: red;margin-top: -30px;">*</p>
+                                    <input style="background-color: #d0d8d82e;"
+                                      class=" form-control"
+                                      type="password"
+                                      [formControl]="MDP2FormControl"
+                                    />
+                                  </div>
+                                </div>
+                           
+                            </div>
+
+                         
+
+
+                           
+        
+      </div>
+      <div class=" card-footer">
+        <div class=" button-container">
+                <button *ngIf="!show2" class=" btn btn-fill btn-danger" style="margin-left: 300px; margin-top: 30px;background-color:  #0eabc7e7;" (click)="connect1()">se connecter</button>
+                <button *ngIf="show2" class=" btn btn-fill btn-danger" style="margin-left: 300px; margin-top: 30px;background-color:  #0eabc7e7;" (click)="inscrire()">Valider</button>
+
+                <button *ngIf="show2" class=" btn btn-fill btn-danger" style="margin-left: 40px; margin-top: -70px;background-color:  #7b7f80e7;" (click)="annuler()">Annuler</button>
+        </div>
+      </div>
+      
+    </div>
+
+
